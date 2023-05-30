@@ -26,14 +26,14 @@ int	exit_point(t_complete *game)
 	exit(0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_complete  game;
+	t_complete	game;
 
-    if (argc != 2)
-        return (0);
-    ft_memset(&game, 0, sizeof(t_complete));
-    ft_read_map(&game, argv);
-    check_errors(&game);
-    printf("OK \n");
+	if (argc != 2)
+		return (0);
+	ft_memset(&game, 0, sizeof(t_complete));
+	ft_read_map(&game, argv);
+	check_errors(&game);
+	printf("OK \n");
 }

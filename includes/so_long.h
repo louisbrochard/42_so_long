@@ -49,7 +49,7 @@ typedef struct s_game
 	void	*collectable;
 	void	*mlxpointer;
 	void	*winpointer;
-}               t_complete;
+}				t_complete;
 
 // utils.c
 void	*ft_memset(void *s, int c, size_t n);
@@ -61,17 +61,14 @@ int		ft_read_map(t_complete *game, char **argv);
 int		exit_point(t_complete *game);
 
 // checker.c
-void		check_errors(t_complete *game);
+void	check_errors(t_complete *game);
 
 // gnl.c
-char    *get_next_line(int fd);
+char	*get_next_line(int fd);
 
 // gnl_utils.c
 size_t	ft_strlen2(char *str);
 char	*ft_strjoin2(char *s1, char *s2);
 char	*ft_strchr2(char *s, int c);
-
-
-
 
 #endif

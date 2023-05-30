@@ -37,7 +37,8 @@ static int	verticalwall(t_complete *game)
 	width = game->widthmap;
 	while (height < game->heightmap)
 	{
-		if (!(game->map[height][0] == '1' && game->map[height][width - 1] == '1'))
+		if (!(game->map[height][0] == '1'
+			&& game->map[height][width - 1] == '1'))
 			return (0);
 		height++;
 	}

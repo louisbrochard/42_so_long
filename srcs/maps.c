@@ -34,8 +34,8 @@ static int	add_line(t_complete *game, char *line)
 	i = 0;
 	game->heightmap++;
 	temporary = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
-    if (!temporary)
-        return (0);
+	if (!temporary)
+		return (0);
 	temporary[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{
@@ -49,9 +49,9 @@ static int	add_line(t_complete *game, char *line)
 	return (1);
 }
 
-int ft_read_map(t_complete *game, char **argv)
+int	ft_read_map(t_complete *game, char **argv)
 {
-    char	*line;
+	char	*line;
 
 	game->fd = open(argv[1], O_RDONLY);
 	if (game->fd < 0)
