@@ -6,7 +6,7 @@
 /*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:21:20 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/05/30 16:05:57 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/01 10:13:26 by louisbrocha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
+
+# include "../minilibx/mlx.h"
 
 typedef struct s_game
 {
@@ -62,6 +64,12 @@ int		exit_point(t_complete *game);
 
 // checker.c
 void	check_errors(t_complete *game);
+
+// graphics.c
+void	adding_in_graphics(t_complete *game);
+void	place_images_in_game(t_complete *game);
+void	place_collectable(t_complete *game, int height, int width);
+void	place_player(t_complete *game, int height, int width);
 
 // gnl.c
 char	*get_next_line(int fd);

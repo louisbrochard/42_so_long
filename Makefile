@@ -1,7 +1,7 @@
 #SETUP
 NAME		=	so_long
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -g -L minilibx -l mlx 
 RM			=	rm -rf
 
 #FILES AND PATH
@@ -14,7 +14,9 @@ MPATH_SRCS	=	so_long.c \
 				gnl.c \
 				gnl_utils.c \
 				maps.c \
-				utils.c
+				utils.c \
+				move.c \
+				graphics.c
 MPATH_DIR	=	srcs/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
