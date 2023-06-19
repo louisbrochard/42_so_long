@@ -6,7 +6,7 @@
 /*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:21:20 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/19 15:34:29 by lbrochar         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:46:54 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <errno.h>
 # include <limits.h>
+# include <X11/keysym.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32

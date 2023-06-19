@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 10:06:46 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/01 10:06:54 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/19 16:57:34 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	keyboard_w_s(t_complete *game, int movement)
 
 	i = game->x_axis;
 	j = game->y_axis;
-	if (movement == 13)
+	if (movement == 119)
 	{
 		j--;
 		if (game->map[j][i] == '1')
@@ -57,7 +57,7 @@ static int	keyboard_w_s(t_complete *game, int movement)
 			return (0);
 		game->map[j + 1][i] = '0';
 	}
-	else if (movement == 1)
+	else if (movement == 115)
 	{
 		j++;
 		if (game->map[j][i] == '1')
@@ -80,7 +80,7 @@ static int	keyboard_a_d(t_complete *game, int movement)
 
 	i = game->x_axis;
 	j = game->y_axis;
-	if (movement == 0)
+	if (movement == 97)
 	{
 		i--;
 		if (game->map[j][i] == '1')
@@ -90,7 +90,7 @@ static int	keyboard_a_d(t_complete *game, int movement)
 			return (0);
 		game->map[j][i + 1] = '0';
 	}
-	else if (movement == 2)
+	else if (movement == 100)
 	{
 		i++;
 		if (game->map[j][i] == '1')
@@ -109,15 +109,15 @@ int	controls_working(int command, t_complete *game)
 {
 	int	works;
 
-	if (command == 53)
+	if (command == 27)
 		exit_point(game);
-	if (command == 13)
+	if (command == 115)
 		works = keyboard_w_s(game, command);
-	if (command == 1)
+	if (command == 119)
 		works = keyboard_w_s(game, command);
-	if (command == 0)
+	if (command == 100)
 		works = keyboard_a_d(game, command);
-	if (command == 2)
+	if (command == 97)
 		works = keyboard_a_d(game, command);
 	if (works)
 		adding_in_graphics(game);
