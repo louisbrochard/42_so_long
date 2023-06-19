@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:22:49 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/01 10:16:04 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/19 15:34:37 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

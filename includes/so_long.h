@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:21:20 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/01 10:13:26 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/19 15:34:29 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #  define BUFFER_SIZE 32
 # endif
 
-# include "../minilibx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 typedef struct s_game
 {
@@ -73,6 +73,10 @@ void	place_player(t_complete *game, int height, int width);
 
 // gnl.c
 char	*get_next_line(int fd);
+
+//move.c
+int	controls_working(int command, t_complete *game);
+
 
 // gnl_utils.c
 size_t	ft_strlen2(char *str);

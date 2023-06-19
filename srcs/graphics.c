@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 09:58:30 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/01 10:22:05 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/19 15:53:21 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	place_images_in_game(t_complete *game)
 	game->barrier = mlx_xpm_file_to_image(game->mlxpointer,
 			"game_img/wall.xpm", &i, &j);
 	game->player = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_img/benze.xpm", &i, &j);
+			"game_img/player.xpm", &i, &j);
 	game->exit = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_img/pirate.xpm", &i, &j);
+			"game_img/exit.xpm", &i, &j);
 	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_img/bo.xpm", &i, &j);
+			"game_img/item.xpm", &i, &j);
 }
 
 void	adding_in_graphics(t_complete *game)
