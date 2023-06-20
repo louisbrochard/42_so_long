@@ -1,6 +1,6 @@
 NAME		=	so_long
 
-CC			=	clang
+CC			=	cc
 
 FLAG		=	-Wall -Wextra -Werror -g
 
@@ -48,7 +48,9 @@ lib:
 mlx:
 	@make -sC $(MLX_PATH)
 
-$(NAME): lib mlx $(OBJ)
+$(NAME): $(OBJ)
+	make lib
+	make mlx
 	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
 	@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
@@ -65,7 +67,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re lib mlx
 
 
 #COLORS

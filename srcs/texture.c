@@ -6,7 +6,7 @@
 /*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:58:24 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 15:53:28 by lbrochar         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:12:45 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_error("Error\nThis programe take 1 argument .ber\n");
-		return (0);
+		return (1);
 	}
 	else
 	{
@@ -98,5 +98,5 @@ int	main(int argc, char **argv)
 		else
 			end(&data);
 	}
-	return (1);
+	return (0);
 }
