@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 15:04:56 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 15:53:41 by lbrochar         ###   ########.fr       */
+/*   Created: 2023/06/20 14:54:21 by lbrochar          #+#    #+#             */
+/*   Updated: 2023/06/20 16:06:41 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
 
-int	ft_same_char(char *str)
+int	ft_strchr(char *str, char *cmp)
 {
 	int		i;
-	char	buff;
+	int		y;
 
 	i = 0;
-	buff = '1';
-	if (str == NULL)
-		return (-1);
+	y = 0;
+	if (cmp[y] == '\0' && str[i] == '\0')
+		return (1);
 	while (str[i])
 	{
-		if (str[i] != buff && str[i] != '\n')
-			return (0);
+		while (str[i + y] == cmp[y] && str[i + y] && cmp[y])
+			y++;
+		if (cmp[y] == '\0' && str[i + y] == '\0')
+			return (1);
+		else
+			y = 0;
 		i++;
 	}
-	return (1);
-}
-
-void	*ft_error(char *str)
-{
-	write(2, str, ft_strlen(str));
 	return (0);
 }

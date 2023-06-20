@@ -1,8 +1,12 @@
 NAME		=	so_long
 
-CC			=	gcc
+CC			=	clang
 
 FLAG		=	-Wall -Wextra -Werror -g
+
+LIBFT_PATH	=	./libft/
+
+LIBFT_FILE	=	libft.a
 
 MLX_FILE	=	libmlx.a
 
@@ -16,14 +20,14 @@ MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
 
 MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
-C_FILE		=	so_long.c \
-				checker.c \
-				gnl.c \
-				gnl_utils.c \
-				maps.c \
-				utils.c \
-				move.c \
-				graphics.c
+C_FILE		=	map.c				\
+				map_check.c			\
+				render.c			\
+				render_mouv.c		\
+				set.c				\
+				texture.c			\
+				utils.c				\
+
 
 SRC_DIR		=	./srcs/
 
@@ -38,29 +42,34 @@ OBJ			=	$(SRC:.c=.o)
 
 all: $(NAME)
 
-mlx:
-	@echo "\033[0;33m\nCOMPILING $(MLX_PATH)...\n"
-	@make -sC $(MLX_PATH)
-	@echo "\033[1;32mMLX_lib created\n"
+lib:
+	@make -C $(LIBFT_PATH)
 
-$(NAME): mlx $(OBJ)
-	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
-	$(CC) $(OBJ) $(MLX_EX) -o $(NAME)
-	@echo "\033[1;32m./so_long created\n"
+mlx:
+	@make -sC $(MLX_PATH)
+
+$(NAME): lib mlx $(OBJ)
+	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
+	@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 clean:
-	@echo "\033[0;31mDeleting Obj file in $(MLX_PATH)...\n"
 	@make clean -sC $(MLX_PATH)
-	@echo "\033[1;32mDone\n"
-	@echo "\033[0;31mDeleting So_long object...\n"
+	@make clean -sC $(LIBFT_PATH)
 	@rm -f $(OBJ)
-	@echo "\033[1;32mDone\n"
+	@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean: clean
-	@echo "\033[0;31mDeleting so_long executable..."
 	@rm -f $(NAME)
-	@echo "\033[1;32mDone\n"
+	@make fclean -C $(LIBFT_PATH)
+	@echo -e "$(RED)all deleted!$(DEFAULT)"
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+
+#COLORS
+RED = \033[1;31m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+DEFAULT = \033[0m

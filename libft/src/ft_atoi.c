@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 15:04:56 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 15:53:41 by lbrochar         ###   ########.fr       */
+/*   Created: 2023/06/20 14:53:22 by lbrochar          #+#    #+#             */
+/*   Updated: 2023/06/20 16:05:45 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
 
-int	ft_same_char(char *str)
+long long int	ft_atoi(const char *str)
 {
-	int		i;
-	char	buff;
+	int				i;
+	int				neg;
+	long long int	ret;
 
+	ret = 0;
+	neg = 1;
 	i = 0;
-	buff = '1';
-	if (str == NULL)
-		return (-1);
-	while (str[i])
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] != buff && str[i] != '\n')
-			return (0);
+		if (str[i] == '-')
+			neg = -neg;
 		i++;
 	}
-	return (1);
-}
-
-void	*ft_error(char *str)
-{
-	write(2, str, ft_strlen(str));
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		ret = ret * 10 + (str[i] - 48);
+		i++;
+	}
+	return (ret * neg);
 }

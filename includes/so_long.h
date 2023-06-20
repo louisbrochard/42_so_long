@@ -5,83 +5,102 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 15:21:20 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/19 16:46:54 by lbrochar         ###   ########.fr       */
+/*   Created: 2023/06/20 14:59:04 by lbrochar          #+#    #+#             */
+/*   Updated: 2023/06/20 15:00:05 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdio.h>
+# include "../libft/includes/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
-//# include <mlx.h>
-# include <math.h>
+# include <stdio.h>
 # include <string.h>
-# include <errno.h>
-# include <limits.h>
 # include <X11/keysym.h>
+# include <X11/X.h>
+# include <fcntl.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
-
-# include "../minilibx-linux/mlx.h"
-
-typedef struct s_game
+typedef struct img_s
 {
-	int		fd;
-	int		heightmap;
-	int		widthmap;
-	int		playercount;
-	int		columncount;
-	int		exitcount;
-	int		x_axis;
-	int		y_axis;
-	int		counter;
-	int		collectables;
+	void	*img_floor;
+	void	*img_player;
+	void	*img_exit;
+	void	*img_wall;
+	void	*img_collect;
+	int		height;
+	int		width;
+	char	*player;
+	char	*floor;
+	char	*wall;
+	char	*collect;
+	char	*exit;
+}				t_img;
 
+typedef struct cnt_s
+{
+	char	exit;
+	char	collect;
+	char	player;
+	char	wall;
+	char	space;
+	int		count_p;
+	int		count_e;
+	int		count_c;
+}				t_cnt;
+
+typedef struct pos_s
+{
+	int		x;
+	int		y;
+}				t_pos;
+
+typedef struct data_s
+{
+	void	*mlx_ptr;
+	void	*mlx_win;
+	int		width;
+	int		height;
 	char	**map;
+	t_cnt	content;
+	t_img	img;
+	t_pos	pos;
+	int		count;
+}				t_data;
 
-	void	*floor;
-	void	*barrier;
-	void	*player;
-	void	*exit;
-	void	*collectable;
-	void	*mlxpointer;
-	void	*winpointer;
-}				t_complete;
+int		ft_strchr(char *str, char *cmp);
+void	*ft_error(char *str);
+int		ft_same_char(char *str);
 
-// utils.c
-void	*ft_memset(void *s, int c, size_t n);
+int		ft_same_char(char *str);
+char	*get_map(int fd);
+char	**map_core(char **str, t_data *data);
+int		chk_map(char **argv);
 
-// maps.c
-int		ft_read_map(t_complete *game, char **argv);
+int		ft_check_col(char *map_line, char col, t_data *data);
+int		ft_check_line(char *map_line, char wall);
+int		ft_check_other(char *map_line, t_cnt *content);
+void	ft_check_content(t_data *data);
+int		ft_check_format(char **map);
+int		chk_collect(t_data *data);
 
-// so_long.c
-int		exit_point(t_complete *game);
+void	set_img(t_data *data);
+void	set_content(t_cnt *content);
 
-// checker.c
-void	check_errors(t_complete *game);
+void	core_render(t_data *data);
+int		render(t_data *data);
+void	render_other(t_data *data);
+void	render_background(t_data *data);
+void	render_down(t_data *data);
+void	render_left(t_data *data);
+void	render_right(t_data *data);
+void	render_top(t_data *data);
+void	print_img(t_data *data, void *img, int x, int y);
 
-// graphics.c
-void	adding_in_graphics(t_complete *game);
-void	place_images_in_game(t_complete *game);
-void	place_collectable(t_complete *game, int height, int width);
-void	place_player(t_complete *game, int height, int width);
-
-// gnl.c
-char	*get_next_line(int fd);
-
-//move.c
-int	controls_working(int command, t_complete *game);
-
-
-// gnl_utils.c
-size_t	ft_strlen2(char *str);
-char	*ft_strjoin2(char *s1, char *s2);
-char	*ft_strchr2(char *s, int c);
+int		key_press(int keysym, t_data *data);
+int		chk_collect(t_data *data);
+int		end(t_data *data);
 
 #endif
