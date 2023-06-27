@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 15:03:04 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 15:52:29 by lbrochar         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:13:54 by louisbrocha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,14 @@ char	**map_core(char **str, t_data *data)
 					"Error\nNeed 1 Player/Exit and at least 1 Object\n"));
 		}
 	}
+	return (data->map);
+}
+
+char	**set_map(char **str, t_data *data, t_cnt *cnt)
+{
+	data->map = map_core(str, data);
+	if (data->map == NULL)
+		return (NULL);
+	check_valid_path(data);
 	return (data->map);
 }

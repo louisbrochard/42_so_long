@@ -14,6 +14,8 @@ CFILE		=	ft_atoi.c		\
 				ft_strlen.c		\
 				ft_strncpy.c	\
 				ft_gnl.c		\
+				ft_calloc.c 	\
+				ft_bzero.c 		\
 
 CFILE_DIR		=	./src/
 

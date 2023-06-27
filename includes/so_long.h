@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:59:04 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 15:00:05 by lbrochar         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:15:29 by louisbrocha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ typedef struct data_s
 	t_img	img;
 	t_pos	pos;
 	int		count;
+	int		rows;
+	int		cols;
+	int 	start_row; 
+	int 	start_col;
+	int 	exit_found;	
 }				t_data;
 
 int		ft_strchr(char *str, char *cmp);
@@ -102,5 +107,13 @@ void	print_img(t_data *data, void *img, int x, int y);
 int		key_press(int keysym, t_data *data);
 int		chk_collect(t_data *data);
 int		end(t_data *data);
+
+void check_valid_path(t_data *data);
+char	**set_map(char **str, t_data *data);
+void	*ft_free_map(t_data *data);
+
+char	**ft_arrdup(char **arr);
+void    get_utils_path(t_data *data);
+void    get_start(char **map, t_data *data);
 
 #endif

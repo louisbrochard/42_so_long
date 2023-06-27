@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:58:24 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/20 18:12:45 by lbrochar         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:13:02 by louisbrocha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 		data.count = 0;
 		data.mlx_ptr = mlx_init();
 		set_content(&(data.content));
-		data.map = map_core(argv, &data);
+		data.map = set_map(argv, &data);
 		if (data.map != NULL)
 		{
 			set_img(&data);

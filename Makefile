@@ -27,7 +27,8 @@ C_FILE		=	map.c				\
 				set.c				\
 				texture.c			\
 				utils.c				\
-
+				check_valid_path.c 	\
+				check_valid_path_utils.c \
 
 SRC_DIR		=	./srcs/
 
