@@ -16,6 +16,7 @@ CFILE		=	ft_atoi.c		\
 				ft_gnl.c		\
 				ft_calloc.c 	\
 				ft_bzero.c 		\
+				ft_printf.c ft_print_char.c ft_print_nbr.c ft_print_str.c ft_print_unsigned.c ft_print_hexa.c ft_print_ptr.c \
 
 CFILE_DIR		=	./src/
 

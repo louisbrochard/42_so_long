@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 15:03:04 by lbrochar          #+#    #+#             */
-/*   Updated: 2023/06/27 10:13:54 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/29 10:11:31 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,17 @@ char	**map_core(char **str, t_data *data)
 	return (data->map);
 }
 
-char	**set_map(char **str, t_data *data, t_cnt *cnt)
+char	**set_map(char **str, t_data *data)
 {
 	data->map = map_core(str, data);
 	if (data->map == NULL)
 		return (NULL);
-	check_valid_path(data);
+	if (check_valid_path(data) == 1)
+	{
+		ft_free_map(data);
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		exit(0);
+	}
 	return (data->map);
 }

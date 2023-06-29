@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 10:16:05 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/27 10:16:07 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/29 10:13:29 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_freemap(t_data *data, char **map_copy)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->rows)
+	{
+		free(map_copy[i]);
+		i++;
+	}
+	free(map_copy);
+}
 
 char	**ft_arrdup(char **arr)
 {

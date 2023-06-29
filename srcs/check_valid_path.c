@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisbrochard <louisbrochard@student.42    +#+  +:+       +#+        */
+/*   By: lbrochar <lbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:01:53 by louisbrocha       #+#    #+#             */
-/*   Updated: 2023/06/27 10:14:21 by louisbrocha      ###   ########.fr       */
+/*   Updated: 2023/06/29 10:15:05 by lbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,27 @@ int	is_valid_path_to_collectibles(char **map, t_data *data)
 	return (row);
 }
 
-void	check_valid_path(t_data *data)
+int	check_valid_path(t_data *data)
 {
 	char	**map_copy;
 	char	**map_copy2;
 	int		i;
 
+	i = 0;
 	get_utils_path(data);
 	map_copy = ft_arrdup(data->map);
 	map_copy2 = ft_arrdup(data->map);
 	if (!is_valid_path_to_exit(map_copy, data))
-		printf("Aucun chemin n'est possible pour aller du P à l'E.\n");
-	if (is_valid_path_to_collectibles(map_copy2, data) != 0)
-		printf("Aucun chemin n'est possible pour aller du P à tous les C.\n");
-	i = 0;
-	while (i < data->rows)
 	{
-		free(map_copy[i]);
-		free(map_copy2[i]);
-		i++;
+		ft_printf("Aucun chemin n'est possible pour aller du P à l'E.\n");
+		i = 1;
 	}
-	free(map_copy);
-	free(map_copy2);
+	if (is_valid_path_to_collectibles(map_copy2, data) != 0)
+	{
+		ft_printf("Aucun chemin n'est possible pour aller du P à tous les C.\n");
+		i = 1;
+	}
+	ft_freemap(data, map_copy);
+	ft_freemap(data, map_copy2);
+	return (i);
 }
